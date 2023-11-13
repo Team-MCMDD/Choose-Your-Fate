@@ -40,4 +40,4 @@ A user can select option which changes their page and affects the story.
 
 ### Data Flow
 
-A user will click the start button and then a "page" in the "book" will be brought up to the screen. The user will then be prompted with multiple choices and choose one. They will be brought to another page and then prompted with choices again. This will continue until they reach the end and then be given a score of pass or fail.
+A user will click the start button and then a "page" in the "book" will be brought up to the screen. The user will then be prompted with multiple choices and choose one. They will be brought to another page and then prompted with choices again. This will continue until they reach the end and then be given a score.
