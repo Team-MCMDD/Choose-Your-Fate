@@ -1,0 +1,40 @@
+
+main{
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-content: center;
+    text-align: center;
+    border: purple solid 10px;
+}
+
+h1{
+    font-family: 'Creepster';
+    font-size: 150px;
+    margin: 50px;
+}
+
+button{
+    background-color: black;
+    color: white;
+    font-family: 'Press+Start+2P';
+    font-size: 30pt;
+    padding: 10px;
+    width: 200px;
+}
+
+
+h2{
+    font-family: 'Press+Start+2P';
+    font-size: 30px;
+    margin: 50px;
+}
+
+
+footer{
+    background-color: purple;
+    color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
