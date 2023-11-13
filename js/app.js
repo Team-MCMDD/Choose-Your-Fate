@@ -27,6 +27,7 @@ Results page: local storage
 // h2 header
 
 const startButton = document.createElement('button');
+
 makeElement(startButton, 'startButton');
 startButton.textContent = 'start';
 startButton.addEventListener('click', initGame)
@@ -34,10 +35,12 @@ startButton.addEventListener('click', initGame)
 function makeElement (element, parentElementIdString) {
     parentElement = document.getElementById(parentElementIdString);
     parentElement.appendChild(element);
+
 }
 
 
 function homepage () {
+
     const h1 = document.createElement('h1');
     makeElement(h1, 'header');
     h1.textContent = 'CHOOSE YOUR FATE';
@@ -51,5 +54,6 @@ function homepage () {
 function initGame () {
 
 }
+
 
 homepage();
