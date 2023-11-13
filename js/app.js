@@ -60,4 +60,7 @@ function removeElements (parentElement, childElement) {
     const childElement = parentElement.firstChild;
     childElement.remove();
 }
+
+function initOptions () {}
+
 homepage();
