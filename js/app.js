@@ -27,25 +27,33 @@ Results page: local storage
 // h2 header
 
 const startButton = document.createElement('button');
-const section = document.getElementById('startButton');
-section.appendChild(startButton);
-startButton.textContent = 'start';
 
-function makeElement () {
-    
+makeElement(startButton, 'startButton');
+startButton.textContent = 'start';
+startButton.addEventListener('click', initGame)
+
+function makeElement (element, parentElementIdString) {
+    parentElement = document.getElementById(parentElementIdString);
+    parentElement.appendChild(element);
+
 }
 
 
 function homepage () {
-    const header = document.getElementById('header');
-    const h1 = document.createElement('h1');
-    h1.textContent = 'CHOOSE YOUR FATE'
-    header.appendChild(h1);
 
-    const header2 = document.getElementById('header2')
+    const h1 = document.createElement('h1');
+    makeElement(h1, 'header');
+    h1.textContent = 'CHOOSE YOUR FATE';
+
+
     const h2 = document.createElement('h2');
-    header2.appendChild(h2);
+    makeElement(h2, 'header2');
     h2.textContent = 'Coding Bootcamp: Enter If You Dare';
 }
+
+function initGame () {
+
+}
+
 
 homepage();
