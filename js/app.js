@@ -55,5 +55,12 @@ function initGame () {
 
 }
 
+function removeElements (parentElement, childElement) {
+    const parentElement = document.getElementById(JSON.stringify(parentElement));
+    const childElement = parentElement.firstChild;
+    childElement.remove();
+}
+
+function initOptions () {}
 
 homepage();
