@@ -56,8 +56,8 @@ function initGame () {
 }
 
 function removeElements (parentElement, childElement) {
-    const parentElement = document.getElementById(JSON.stringify(parentElement));
-    const childElement = parentElement.firstChild;
+    parentElement = document.getElementById(JSON.stringify(parentElement));
+    childElement = parentElement.firstChild;
     childElement.remove();
 }
 
