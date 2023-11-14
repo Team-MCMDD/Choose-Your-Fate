@@ -26,45 +26,12 @@ Results page: local storage
 // button
 // h2 header
 
-const startButton = document.createElement('button');
-
-makeElement(startButton, 'startButton');
-startButton.textContent = 'start';
-startButton.addEventListener('click', initGame)
-
-function makeElement (element, parentElementIdString) {
-    parentElement = document.getElementById(parentElementIdString);
-    parentElement.appendChild(element);
-
-}
-
-
-function homepage () {
-
-    const h1 = document.createElement('h1');
-    makeElement(h1, 'header');
-    h1.textContent = 'CHOOSE YOUR FATE';
-
-
-    const h2 = document.createElement('h2');
-    makeElement(h2, 'header2');
-    h2.textContent = 'Coding Bootcamp: Enter If You Dare';
-}
-
-function initGame () {
-
-}
-
-function removeElements (parentElement, childElement) {
-    parentElement = document.getElementById(JSON.stringify(parentElement));
-    childElement = parentElement.firstChild;
-    childElement.remove();
-}
-
-function initOptions () {}
-
-homepage();
-
+function Storyobject (text, img, option1, option2){
+    this.text=text;
+    this.img=img;
+    this.option1=option1;
+    this.option2=option2;
+};
 
 const start = 
 
@@ -81,13 +48,13 @@ const start =
         choices: 
         [
             {
-                buttonText: "Eat",
+                buttonText1: "Eat",
                 text: "You must nourish your body, you decide to cook yourself a well balanced meal.",
                 nextState: 'examTimeFull',
             },
 
             {
-                buttonText: "Study",
+                buttonText2: "Study",
                 text: 
                     [
                         "You tell Mr. Instructor, ‘I am but a soldier and what I do is follow orders.’ and bid him farewell.",
@@ -100,6 +67,8 @@ const start =
         ],
     }
 }
+
+const startobject=new Storyobject (start.start.text, start.img, start.choices.buttonText1, start.choices.buttonText2);
 
 const startButton = document.createElement('button');
 
