@@ -22,12 +22,7 @@ Results page: local storage
 
 */
 
-// h1 header
-// button
-// h2 header
-
 const startButton = document.createElement('button');
-
 makeElement(startButton, 'startButton');
 startButton.textContent = 'start';
 startButton.addEventListener('click', initGame)
@@ -61,6 +56,8 @@ function removeElements (parentElement, childElement) {
     childElement.remove();
 }
 
-function initOptions () {}
+function initOptions () {
+
+}
 
 homepage();
