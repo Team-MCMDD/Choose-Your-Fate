@@ -8,7 +8,7 @@ main{
     border: purple solid 10px;
 }
 
-h1{
+#header{
     font-family: 'Creepster';
     font-size: 150px;
     margin: 50px;
@@ -24,7 +24,7 @@ button{
 }
 
 
-h2{
+#header2{
     font-family: 'Press Start 2P';
     font-size: 30px;
     margin: 50px;
