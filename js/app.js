@@ -96,7 +96,11 @@ function removeElements (parentElement, childElement) {
     childElement.remove();
 }
 
-function initOptions () {}
+function initOptions () {
+    const button = document.createElement('button');
+    makeElement(button,'text');
+    button.textContent = state.buttonText;
+}
 function rendergames (state){
     const textcontainer = document.getElementById('text');
     textcontainer.innerHTML = '';
@@ -104,6 +108,11 @@ function rendergames (state){
     const p = document.createElement('p');
     makeElement(p,'text');
     p.textContent = state.text;
+    const arrow = document.createElement('img');
+    makeElement(arrow,'text');
+    const picture = document.createElement('img');
+    makeElement(picture,'container');
+
 }
 homepage();
 initGame();
