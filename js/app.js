@@ -25,47 +25,6 @@ Results page: local storage
 // h1 header
 // button
 // h2 header
-
-const startButton = document.createElement('button');
-
-makeElement(startButton, 'startButton');
-startButton.textContent = 'start';
-startButton.addEventListener('click', initGame)
-
-function makeElement (element, parentElementIdString) {
-    parentElement = document.getElementById(parentElementIdString);
-    parentElement.appendChild(element);
-
-}
-
-
-function homepage () {
-
-    const h1 = document.createElement('h1');
-    makeElement(h1, 'header');
-    h1.textContent = 'CHOOSE YOUR FATE';
-
-
-    const h2 = document.createElement('h2');
-    makeElement(h2, 'header2');
-    h2.textContent = 'Coding Bootcamp: Enter If You Dare';
-}
-
-function initGame () {
-
-}
-
-function removeElements (parentElement, childElement) {
-    parentElement = document.getElementById(JSON.stringify(parentElement));
-    childElement = parentElement.firstChild;
-    childElement.remove();
-}
-
-function initOptions () {}
-
-homepage();
-
-
 const start = 
 
 {
@@ -100,6 +59,55 @@ const start =
         ],
     }
 }
+
+const startButton = document.createElement('button');
+
+makeElement(startButton, 'startButton');
+startButton.textContent = 'start';
+startButton.addEventListener('click', initGame)
+
+function makeElement (element, parentElementIdString) {
+    parentElement = document.getElementById(parentElementIdString);
+    parentElement.appendChild(element);
+
+}
+
+
+function homepage () {
+
+    const h1 = document.createElement('h1');
+    makeElement(h1, 'header');
+    h1.textContent = 'CHOOSE YOUR FATE';
+
+
+    const h2 = document.createElement('h2');
+    makeElement(h2, 'header2');
+    h2.textContent = 'Coding Bootcamp: Enter If You Dare';
+}
+
+function initGame () {
+    rendergames(start.start);
+
+}
+
+function removeElements (parentElement, childElement) {
+    parentElement = document.getElementById(JSON.stringify(parentElement));
+    childElement = parentElement.firstChild;
+    childElement.remove();
+}
+
+function initOptions () {}
+function rendergames (state){
+    const textcontainer = document.getElementById('text');
+    textcontainer.innerHTML = '';
+    
+    const p = document.createElement('p');
+    makeElement(p,'text');
+    p.textContent = state.text;
+}
+homepage();
+initGame();
+
 
 const examTime = 
 {
