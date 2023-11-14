@@ -27,11 +27,11 @@ Results page: local storage
 // h2 header
 
 function Storyobject (text, img, option1, option2){
-    this.text=text,
-    this.img=img,
-    this.option1=option1,
-    this.option2=option2,
-}
+    this.text=text;
+    this.img=img;
+    this.option1=option1;
+    this.option2=option2;
+};
 
 const start = 
 
