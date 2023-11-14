@@ -31,7 +31,7 @@ function Storyobject (text, img, option1, option2){
     this.img=img;
     this.option1=option1;
     this.option2=option2;
-};
+}
 
 const start = 
 
@@ -68,7 +68,7 @@ const start =
     }
 }
 
-const startobject=new Storyobject (start.start.text, start.img, start.choices.buttonText1, start.choices.buttonText2);
+const startobject=new Storyobject (start.start.text, start.img, start.choices, start.choices);
 
 const startButton = document.createElement('button');
 
