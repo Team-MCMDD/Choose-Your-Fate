@@ -42,8 +42,7 @@ const start =
         ],
         text: 
         [       
-            "You are a coding student in bootcamp, green and wide eyed. The day is bright and promising.", 
-            "You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!"
+            "You are a coding student in bootcamp, green and wide-eyed. The day is bright and promising. You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!"
         ],
 
         nextText: 
@@ -64,8 +63,7 @@ const start =
                 buttonText: "Study",
                 text: 
                     [
-                        "You tell Mr. Instructor, ‘I am but a soldier and what I do is follow orders.’ and bid him farewell.",
-                        "You then you go home, open your laptop, and study like the goody two shoes you are."
+                        "You tell Mr. Instructor, ‘I am but a soldier and what I do is follow orders.’ and bid him farewell.  You then go home, open your laptop, and study like the good soldier you are."
                     ],
 
                 nextState: 'examTimePrepared',
@@ -76,19 +74,19 @@ const start =
 
     examTimeFull:
     {
-        text: "Now it is time to take the exam, but with your tummy full, you are now ready to sleep off your meal."
+        text: "Now it is time to take the exam, but with your tummy full you are now ready to sleep off your meal."
     },
 
     examTimePrepared:
     {
-        text: "Now it is time to take the exam, you feel confident since you studied but also feel sleepy."
+        text: "Now it is time to take the exam.  You feel confident, since you studied, but you also feel sleepy."
     },
 
     choices:
     [
         {
             buttonText: "Take Exam",
-            text: "You crack your knuckles and prioritize the exam before sleep! You are a Responsible adult!",
+            text: "You crack your knuckles and prioritize the exam before sleep! You are a responsible adult, after all!",
             nextState: '?'
         },
 

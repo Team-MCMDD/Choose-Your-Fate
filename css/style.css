@@ -55,29 +55,32 @@ button:hover {
 
 .pageArrow {
     animation: shake 3s ease-in-out infinite;
-    /* Apply the shake animation */
+    /* Animation command code written with help from ChatGPT */
 }
 
 
 @keyframes shake {
-
+/* The following animation commands were written with help from ChatGPT */
     0%,
+
     100% {
         transform: translateX(0);
     }
-
+    
     25%,
+    
     75% {
         transform: translateX(-5px);
     }
-
+    
     50% {
         transform: translateX(30px);
     }
 }
 
 .pageArrow:hover {
-    filter: brightness(1.5);
+    filter: brightness(80);
+    animation-play-state: paused;
 }
 
 
