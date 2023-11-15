@@ -6,6 +6,19 @@ main{
     align-content: center;
     text-align: center;
     border: purple solid 10px;
+    font-family: 'Press Start 2P';
+    font-size: 18pt;
+}
+
+main img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+main p{
+    /* border: purple solid 10px; */
+    height: 100%;
 }
 
 #header{
