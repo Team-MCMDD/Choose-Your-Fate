@@ -38,7 +38,10 @@ const start =
 {
     start: 
     {
-
+        img: 
+        [
+            'img/Classroom.jpg'
+        ],
         text: 
         [       
             "You are a coding student in bootcamp, green and wide eyed. The day is bright and promising.", 
@@ -120,11 +123,15 @@ function rendergames (state){
     
     const p = document.createElement('p');
     makeElement(p,'text');
+    p.classList.add('page1');
     p.textContent = state.text;
     const arrow = document.createElement('img');
     makeElement(arrow,'text');
+    arrow.classList.add('page1');
     const picture = document.createElement('img');
     makeElement(picture,'container');
+    picture.classList.add('page1');
+    picture.setAttribute('src', start.start.img);
 
     createChoices();
     
