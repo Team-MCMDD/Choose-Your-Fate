@@ -79,8 +79,7 @@ button:hover {
 }
 
 .pageArrow:hover {
-    filter: brightness(5);
-    /* filter: invert(1); */
+    filter: brightness(3) invert(1);
     animation-play-state: paused;
 }
 
