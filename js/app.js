@@ -48,13 +48,13 @@ const start =
         choices: 
         [
             {
-                buttonText1: "Eat",
+                buttonText: "Eat",
                 text: "You must nourish your body, you decide to cook yourself a well balanced meal.",
                 nextState: 'examTimeFull',
             },
 
             {
-                buttonText2: "Study",
+                buttonText: "Study",
                 text: 
                     [
                         "You tell Mr. Instructor, ‘I am but a soldier and what I do is follow orders.’ and bid him farewell.",
@@ -126,6 +126,26 @@ function rendergames (state){
     const picture = document.createElement('img');
     makeElement(picture,'container');
 
+    createChoices();
+    
+
+}
+
+function createChoices(choices){
+
+    const optionContainer = document.createElement('div');
+    makeElement(optionContainer, 'main');
+
+
+    for (let i = 0; i < state.choices.length; i++){
+        
+        const button = document.createElement('button');
+        button.textContent = choices.buttonText;
+        button.classList.add('button-choice');
+        button.addEventListener('click', initOptions);
+        makeElement(button, text);
+    }
+    
 }
 
 homepage();
