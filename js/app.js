@@ -23,14 +23,6 @@ add text to page 2
 
 */
 
-
-function Storyobject (text, img, option1, option2){
-    this.text=text;
-    this.img=img;
-    this.option1=option1;
-    this.option2=option2;
-}
-
 const start = 
 
 {
@@ -40,6 +32,9 @@ const start =
         [
             'img/Classroom1.jpg'
         ],
+
+        showImage: true,
+
         text: 
         [       
             "You are a coding student in bootcamp, green and wide-eyed. The day is bright and promising. You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!"
@@ -70,41 +65,66 @@ const start =
             }
 
         ],
+
     },
 
     examTimeFull:
     {
-        text: "Now it is time to take the exam, but with your tummy full you are now ready to sleep off your meal."
+        img: 
+        [
+            'img/Cooking.jpg'
+        ],
+
+        showImage: true,
+
+        text: "Now it is time to take the exam, but with your tummy full you are now ready to sleep off your meal.",
+
+        choices:
+            [
+                {
+                    buttonText: "Take Exam",
+                    text: "You crack your knuckles and prioritize the exam before sleep! You are a responsible adult, after all!",
+                    nextState: '?'
+                },
+
+                {
+                    buttonText: "Take a nap",
+                    text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
+                    nextState: '?'
+                },
+            ]
     },
 
     examTimePrepared:
     {
-        text: "Now it is time to take the exam.  You feel confident, since you studied, but you also feel sleepy."
+
+        img: 
+        [
+            'img/Studying.jpg'
+        ],
+
+        showImage: true,
+
+        text: "Now it is time to take the exam.  You feel confident, since you studied, but you also feel sleepy.",
+
+        choices:
+        [
+            {
+                buttonText: "Take Exam",
+                text: "You crack your knuckles and prioritize the exam before sleep! You are a responsible adult, after all!",
+                nextState: '?'
+            },
+
+            {
+                buttonText: "Take a nap",
+                text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
+                nextState: '?'
+            },
+        ]
     },
-
-    choices:
-    [
-        {
-            buttonText: "Take Exam",
-            text: "You crack your knuckles and prioritize the exam before sleep! You are a responsible adult, after all!",
-            nextState: '?'
-        },
-
-        {
-            buttonText: "Take a nap",
-            text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
-            nextState: '?'
-        },
-    ]
 }
 
-const central = {
-    start: start.start,
-    examTimeFull: start.examTimeFull.text,
-
-};
-
-const startobject=new Storyobject (start.start.text, start.img, start.choices, start.choices);
+// const startobject=new Storyobject (start.start.text, start.img, start.choices, start.choices);
 
 const startButton = document.createElement('button');
 
@@ -141,7 +161,10 @@ function initGame() {
     header2.remove();
     startButton.remove();
     // Continue with the rest of your game setup
+
+    generatePicture();
     rendergames(start.start);
+
     // Source: ChatGPT
 }
     
@@ -150,6 +173,7 @@ function initOptions () {
     makeElement(button,'text');
     button.textContent = state.buttonText;
 }
+
 function rendergames (state){
     const textcontainer = document.getElementById('text');
     textcontainer.innerHTML = '';
@@ -159,7 +183,7 @@ function rendergames (state){
     makeElement(p,'text');
     p.classList.add('page1');
     p.textContent = state.text;
-    
+
     const arrow = document.createElement('img')
     arrow.classList.add('pageArrow');
     makeElement(arrow,'text');
@@ -169,13 +193,14 @@ function rendergames (state){
     }
     );
     
-    const picture = document.createElement('img');
-    makeElement(picture,'container');
-    picture.classList.add('page1');
-    picture.setAttribute('src', start.start.img);
-   
-}
+    const picture = document.querySelector('.page1');
 
+    if (state.showImage){
+        picture.setAttribute('src' , state.img);
+
+    }
+
+}
 function changeText (state) {
     const p = document.getElementById('p');
     p.textContent = '';
@@ -192,7 +217,7 @@ function createChoices(state, choices){
     const p = document.getElementById('p');
 
     p.innerHTML = ''
-    p.textContent = state.examTimeFull;
+    p.textContent = state.nextText || state.text;
 
 
     for (let i = 0; i < choices.length; i++){
@@ -203,7 +228,7 @@ function createChoices(state, choices){
         optionContainer.appendChild(button);
         button.addEventListener('click', function() {
 
-            changeText(central[choices[i].nextState]);
+            displayChoiceText(choices[i].text, choices[i].nextState);
 
         });
         
@@ -211,44 +236,62 @@ function createChoices(state, choices){
     
 }
 
-homepage();
-
-
-
-
-
-const endResults = 
-{
-
+function generatePicture(){
+    const picture = document.createElement('img');
+    makeElement(picture,'container');
+    picture.classList.add('page1');
+    picture.setAttribute('src', start.start.img);
 }
 
-// const story = {
+// function displayChoiceText(choiceText, nextState){
+//     const textcontainer = document.getElementById('text');
+//     textcontainer.innerHTML = '';
 
-//     start: {
-//       text: [
-//             "It's your first day as a junior coder and you're pretty nervous . . .",
-//             "You see a coffee stand to your right and a group gathering for classes. Which do you go to?"
-//         ],
-//       choices: [
-//         {
-//           buttontext: "Go get Coffee",
-//           text: [
+//     const p = document.createElement('p');
+//     makeElement(p, 'text');
+//     p.textContent = choiceText;
+//     textcontainer.appendChild(p);
 
-//             "Forget people, you don't like being in a crowd!",
-//             "You grab some coffee to wait out the crowd . . ."
+//     let arrow = document.querySelector('.pageArrow');
+//     if (arrow) {
+//         arrow.addEventListener('click', function() {
 
-//             ],
-//           nextState: 'gotCoffee',
-//         },
-//         {
-//           buttontext: "Check the crowd",
-//           text: [
-//             "You're already wired from the adrenaline of the first day who needs coffee!",
-//             "You push through the crowd to see what course you're in . . ."
-//           ],
-//           nextState: 'checkCrowd',
-//         },
-//       ],
-//     },
-// };
+//             rendergames(start[nextState]);
+//         });
+//     }
+// }
 
+function displayChoiceText(choiceText, nextState){
+    const textcontainer = document.getElementById('text');
+    textcontainer.innerHTML = '';
+
+    const p = document.createElement('p');
+    makeElement(p, 'text');
+    p.textContent = choiceText;
+    textcontainer.appendChild(p);
+
+    let arrow = document.querySelector('.pageArrow');
+    
+    if (!arrow) {
+        // Create the arrow if it does not exist
+        arrow = document.createElement('img');
+        arrow.classList.add('pageArrow');
+        makeElement(arrow, 'text');
+        arrow.setAttribute('src', 'img/arrow.jpg');
+    }
+
+    // Ensure arrow is visible
+    arrow.style.display = 'block';
+
+    // Remove any existing event listeners
+    arrow.replaceWith(arrow.cloneNode(true));
+    arrow = document.querySelector('.pageArrow'); // Re-select the arrow
+
+    // Add new event listener
+    arrow.addEventListener('click', function() {
+        rendergames(start[nextState]);
+    });
+}
+
+
+homepage();
