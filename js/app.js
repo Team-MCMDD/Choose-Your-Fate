@@ -72,8 +72,39 @@ const start =
             }
 
         ],
-    }
+    },
+
+    examTimeFull:
+    {
+        text: "Now it is time to take the exam, but with your tummy full, you are now ready to sleep off your meal."
+    },
+
+    examTimePrepared:
+    {
+        text: "Now it is time to take the exam, you feel confident since you studied but also feel sleepy."
+    },
+
+    choices:
+    [
+        {
+            buttonText: "Take Exam",
+            text: "You crack your knuckles and prioritize the exam before sleep! You are a Responsible adult!",
+            nextState: '?'
+        },
+
+        {
+            buttonText: "Take a nap",
+            text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
+            nextState: '?'
+        },
+    ]
 }
+
+const central = {
+    start: start.start,
+    examTimeFull: start.examTimeFull.text,
+
+};
 
 const startobject=new Storyobject (start.start.text, start.img, start.choices, start.choices);
 
@@ -147,6 +178,14 @@ function rendergames (state){
    
 }
 
+function changeText (state) {
+    const p = document.getElementById('p');
+    p.textContent = '';
+    p.textContent = start.state;
+
+
+}
+
 function createChoices(state, choices){
 
     const optionContainer = document.createElement('div');
@@ -155,7 +194,7 @@ function createChoices(state, choices){
     const p = document.getElementById('p');
 
     p.innerHTML = ''
-    p.textContent = state.nextText;
+    p.textContent = state.examTimeFull;
 
 
     for (let i = 0; i < choices.length; i++){
@@ -163,12 +202,13 @@ function createChoices(state, choices){
         const button = document.createElement('button');
         button.textContent = choices[i].buttonText;
         button.classList.add('button-choice');
+        optionContainer.appendChild(button);
         button.addEventListener('click', function() {
 
-            rendergames(states[choices[i].nextState]);
+            changeText(central[choices[i].nextState]);
 
         });
-        optionContainer.appendChild(button);
+        
     }
     
 }
@@ -177,33 +217,7 @@ homepage();
 
 
 
-const examTime = 
-{
-    examTimeFull:
-    {
-        text: "Now it is time to take the exam, but with your tummy full, you are now ready to sleep off your meal."
-    },
 
-    examTimePrepared:
-    {
-        text: "Now it is time to take the exam, you feel confident since you studied but also feel sleepy."
-    },
-
-    choices:
-    [
-        {
-            buttonText: "Take Exam",
-            text: "You crack your knuckles and prioritize the exam before sleep! You are a Responsible adult!",
-            nextState: '?'
-        },
-
-        {
-            buttonText: "Take a nap",
-            text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
-            nextState: '?'
-        },
-    ]
-}
 
 const endResults = 
 {
@@ -239,3 +253,4 @@ const endResults =
 //       ],
 //     },
 // };
+
