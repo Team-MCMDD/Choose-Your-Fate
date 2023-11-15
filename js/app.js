@@ -40,7 +40,7 @@ const start =
     {
         img: 
         [
-            'img/Classroom.jpg'
+            'img/Classroom1.jpg'
         ],
         text: 
         [       

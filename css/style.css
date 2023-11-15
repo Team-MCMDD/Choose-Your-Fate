@@ -1,6 +1,6 @@
 
 main{
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
     align-content: center;
@@ -10,8 +10,13 @@ main{
     font-size: 18pt;
 }
 
-main img{
-    width: 100%;
+main #results{
+    width: 50%;
+}
+
+img{
+    /* width: 100%; */
+    margin-top: 1%;
     margin-bottom: 20px;
 }
 
@@ -34,6 +39,7 @@ button{
     font-size: 20pt;
     padding: 20px;
     width: 250px;
+    margin: 5px;
 }
 
 
