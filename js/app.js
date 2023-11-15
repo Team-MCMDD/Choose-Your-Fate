@@ -133,7 +133,7 @@ function rendergames (state){
     picture.classList.add('page1');
     picture.setAttribute('src', start.start.img);
 
-    createChoices();
+    createChoices(state.choices);
     
 
 }
@@ -141,16 +141,20 @@ function rendergames (state){
 function createChoices(choices){
 
     const optionContainer = document.createElement('div');
-    makeElement(optionContainer, 'main');
+    makeElement(optionContainer, 'text');
 
 
-    for (let i = 0; i < state.choices.length; i++){
+    for (let i = 0; i < choices.length; i++){
         
         const button = document.createElement('button');
-        button.textContent = choices.buttonText;
+        button.textContent = choices[i].buttonText;
         button.classList.add('button-choice');
-        button.addEventListener('click', initOptions);
-        makeElement(button, text);
+        button.addEventListener('click', function() {
+
+            rendergames(states[choices[i].nextState]);
+
+        });
+        optionContainer.appendChild(button);
     }
     
 }
