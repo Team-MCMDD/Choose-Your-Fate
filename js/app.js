@@ -215,11 +215,7 @@ function resetPage() {
     container.innerHTML = '';
 }
 
-
-
 homepage();
-
-
 
 const examTime =
 {
