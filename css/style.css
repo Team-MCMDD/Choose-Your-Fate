@@ -1,7 +1,4 @@
-
-
-
-main{
+main {
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -12,29 +9,29 @@ main{
     font-size: 18pt;
 }
 
-main #results{
+main #results {
     width: 50%;
 }
 
-img{
+img {
     /* width: 100%; */
     margin-top: 1%;
     margin-bottom: 20px;
 }
 
 
-main p{
+main p {
     /* border: purple solid 10px; */
     height: 100%;
 }
 
-#header{
+#header {
     font-family: 'Creepster';
     font-size: 150px;
     margin: 50px;
 }
 
-button{
+button {
     background-color: black;
     color: white;
     font-family: 'Press Start 2P';
@@ -49,14 +46,45 @@ button:hover {
 }
 
 
-#header2{
+#header2 {
     font-family: 'Press Start 2P';
     font-size: 30px;
     margin: 50px;
 }
 
 
-footer{
+.pageArrow {
+    animation: shake 3s ease-in-out infinite;
+    /* Animation command code written with help from ChatGPT */
+}
+
+
+@keyframes shake {
+/* The following animation commands were written with help from ChatGPT */
+    0%,
+
+    100% {
+        transform: translateX(0);
+    }
+    
+    25%,
+    
+    75% {
+        transform: translateX(-5px);
+    }
+    
+    50% {
+        transform: translateX(30px);
+    }
+}
+
+.pageArrow:hover {
+    filter: brightness(3) invert(1);
+    animation-play-state: paused;
+}
+
+
+footer {
     background-color: purple;
     color: white;
     width: 90%;
