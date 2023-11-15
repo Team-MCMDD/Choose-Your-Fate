@@ -162,10 +162,10 @@ function rendergames (state){
     p.classList.add('page1');
     p.textContent = state.text;
     
-    const arrow = document.createElement('img');
+    const arrow = document.createElement('img')
+    arrow.classList.add('pageArrow');
     makeElement(arrow,'text');
     arrow.setAttribute('src', 'img/arrow.jpg');
-    arrow.classList.add('page1');
     arrow.addEventListener('click', function(){
         createChoices(state, state.choices)
     }
