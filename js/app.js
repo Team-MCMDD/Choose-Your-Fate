@@ -95,17 +95,20 @@ function homepage () {
     h2.textContent = 'Coding Bootcamp: Enter If You Dare';
 }
 
-function initGame () {
+function initGame() {
+    // Get references to the elements you want to remove
+    const header = document.getElementById('header');
+    const header2 = document.getElementById('header2');
+    const startButton = document.getElementById('startButton');
+    // Remove the elements
+    header.remove();
+    header2.remove();
+    startButton.remove();
+    // Continue with the rest of your game setup
     rendergames(start.start);
-
+    // Source: ChatGPT
 }
-
-function removeElements (parentElement, childElement) {
-    parentElement = document.getElementById(JSON.stringify(parentElement));
-    childElement = parentElement.firstChild;
-    childElement.remove();
-}
-
+    
 function initOptions () {
     const button = document.createElement('button');
     makeElement(button,'text');
@@ -124,8 +127,9 @@ function rendergames (state){
     makeElement(picture,'container');
 
 }
+
 homepage();
-initGame();
+
 
 
 const examTime = 
