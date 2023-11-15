@@ -19,12 +19,10 @@ Conditional statement for round numbers: if or switch
 
 Results page: local storage
 
+add text to page 2
 
 */
 
-// h1 header
-// button
-// h2 header
 
 function Storyobject (text, img, option1, option2){
     this.text=text;
@@ -46,6 +44,12 @@ const start =
         [       
             "You are a coding student in bootcamp, green and wide eyed. The day is bright and promising.", 
             "You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!"
+        ],
+
+        nextText: 
+        [
+            "You realize you still have to study for the exam, but also, your tummy is grumbling."
+
         ],
 
         choices: 
@@ -122,26 +126,36 @@ function rendergames (state){
     textcontainer.innerHTML = '';
     
     const p = document.createElement('p');
+    p.setAttribute('id', 'p');
     makeElement(p,'text');
     p.classList.add('page1');
     p.textContent = state.text;
+    
     const arrow = document.createElement('img');
     makeElement(arrow,'text');
+    arrow.setAttribute('src', 'img/arrow.jpg');
     arrow.classList.add('page1');
+    arrow.addEventListener('click', function(){
+        createChoices(state, state.choices)
+    }
+    );
+    
     const picture = document.createElement('img');
     makeElement(picture,'container');
     picture.classList.add('page1');
     picture.setAttribute('src', start.start.img);
-
-    createChoices(state.choices);
-    
-
+   
 }
 
-function createChoices(choices){
+function createChoices(state, choices){
 
     const optionContainer = document.createElement('div');
     makeElement(optionContainer, 'text');
+   
+    const p = document.getElementById('p');
+
+    p.innerHTML = ''
+    p.textContent = state.nextText;
 
 
     for (let i = 0; i < choices.length; i++){
