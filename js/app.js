@@ -34,18 +34,15 @@ function StoryOptionsObject(text, img, option1, option2) {
     this.option2 = option2;
 }
 
-
 function StoryOutcomeObject(text, img) {
     this.text = text;
     this.img = img;
 }
 
-
 const openingPage = new StoryOutcomeObject(openingText, 'img/Classroom1.jpg');
 const optionsPage1 = new StoryOptionsObject(optionsTextPage1, 'img/Classroom1.jpg', 'Eat', 'Study');
 const option1Page2Object = new StoryOutcomeObject(option1Page2Text, 'img/Cooking.jpg');
 const option2Page2Object = new StoryOutcomeObject(option2Page2Text, 'img/Studying.jpg');
-
 
 
 const start =
@@ -91,6 +88,7 @@ const start =
             ],
     }
 }
+
 const startButton = document.createElement('button');
 
 makeElement(startButton, 'startButton');
@@ -143,17 +141,19 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     p.setAttribute('id', 'p');
     makeElement(p, 'text');
     p.classList.add('page1');
-
     p.textContent = storyOutcomeObject.text;
 
     const arrow = document.createElement('img');
     makeElement(arrow, 'text');
     arrow.setAttribute('src', 'img/arrow.jpg');
-    arrow.setAttribute('id', 'arrow')
-    arrow.classList.add('page1');
+    arrow.setAttribute('id', 'arrow');
+    arrow.classList.add('pageArrow');
     arrow.addEventListener('click', function () {
-
+        if (storyOutcomeObject) {
         createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2);
+        } else {
+            resetPage();
+        }
     });
 
     const picture = document.createElement('img');
@@ -162,6 +162,7 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     picture.classList.add('page1');
     picture.setAttribute('src', storyOutcomeObject.img);
 
+}
 
 function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2) {
 
@@ -172,7 +173,6 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     lastArrow.remove();
     const lastImg = document.getElementById('picture');
     lastImg.remove();
-
 
     const picture = document.createElement('img');
     picture.setAttribute('id', 'picture');
@@ -206,9 +206,14 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
+        if (storyOptionsObject) {
         rendergames(nextStoryOutcome2);
+        } else {
+            resetPage();
+        }
     })
 
+    
 }
 
 function resetPage() {
@@ -221,3 +226,65 @@ function resetPage() {
 
 homepage();
 
+const examTime =
+{
+    examTimeFull:
+    {
+        text: "Now it is time to take the exam, but with your tummy full, you are now ready to sleep off your meal."
+    },
+
+    examTimePrepared:
+    {
+        text: "Now it is time to take the exam, you feel confident since you studied but also feel sleepy."
+    },
+
+    choices:
+        [
+            {
+                buttonText: "Take Exam",
+                text: "You crack your knuckles and prioritize the exam before sleep! You are a Responsible adult!",
+                nextState: '?'
+            },
+
+            {
+                buttonText: "Take a nap",
+                text: "You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.",
+                nextState: '?'
+            },
+        ]
+}
+
+const endResults =
+{
+
+}
+
+// const story = {
+
+//     start: {
+//       text: [
+//             "It's your first day as a junior coder and you're pretty nervous . . .",
+//             "You see a coffee stand to your right and a group gathering for classes. Which do you go to?"
+//         ],
+//       choices: [
+//         {
+//           buttontext: "Go get Coffee",
+//           text: [
+
+//             "Forget people, you don't like being in a crowd!",
+//             "You grab some coffee to wait out the crowd . . ."
+
+//             ],
+//           nextState: 'gotCoffee',
+//         },
+//         {
+//           buttontext: "Check the crowd",
+//           text: [
+//             "You're already wired from the adrenaline of the first day who needs coffee!",
+//             "You push through the crowd to see what course you're in . . ."
+//           ],
+//           nextState: 'checkCrowd',
+//         },
+//       ],
+//     },
+// };
