@@ -146,11 +146,14 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     const arrow = document.createElement('img');
     makeElement(arrow, 'text');
     arrow.setAttribute('src', 'img/arrow.jpg');
-    arrow.setAttribute('id', 'arrow')
-    arrow.classList.add('page1');
+    arrow.setAttribute('id', 'arrow');
+    arrow.classList.add('pageArrow');
     arrow.addEventListener('click', function () {
-
+        if (storyOutcomeObject) {
         createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2);
+        } else {
+            resetPage();
+        }
     });
 
     const picture = document.createElement('img');
@@ -203,8 +206,16 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
+        if (storyOptionsObject) {
         rendergames(nextStoryOutcome2);
+        } else {
+            resetPage();
+        }
     })
+
+
+    
+
 }
 
 function resetPage() {
@@ -279,3 +290,4 @@ const endResults =
 //       ],
 //     },
 // };
+
