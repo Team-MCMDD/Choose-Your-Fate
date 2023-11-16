@@ -274,7 +274,7 @@ function finalPage(noTest){
         judgement.textContent = 'YOU FAIL' 
     } else if (total < 1){
         judgement.textContent = 'YOU FAIL' } else {
-        judgement.textContent = 'Congradulations! You pass!'
+        judgement.textContent = 'Congratulations! You pass!'
     }
     
 }
