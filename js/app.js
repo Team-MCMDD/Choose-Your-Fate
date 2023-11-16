@@ -24,7 +24,7 @@ add text to page 2
 */
 const openingText = 'You are a coding student in bootcamp, green and wide eyed. The day is bright and promising. You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!';
 const optionsTextPage1 = 'You realize you still have to study for the exam, but also, your tummy is grumbling.';
-const option1Page2Text = 'You must nourish your body, you decide to cook yourself a well balanced meal.';
+const option1Page2Text = 'You must nourish your body! You decide to cook yourself a well balanced meal.';
 const option2Page2Text = 'You tell Mr. Instructor, "I am but a soldier and what I do is follow orders" and bid him farewell. And then you go home, open your laptop, and study like the goody two shoes you are.';
 
 function StoryOptionsObject(text, img, option1, option2) {
@@ -70,7 +70,7 @@ const start =
             [
                 {
                     buttonText: "Eat",
-                    text: "You must nourish your body, you decide to cook yourself a well balanced meal.",
+                    text: "You must nourish your body! You decide to cook yourself a well balanced meal.",
                     nextState: 'examTimeFull',
                 },
 
