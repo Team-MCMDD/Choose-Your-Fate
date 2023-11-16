@@ -28,7 +28,7 @@ const hardfail = true;
 const otherwise = false;
 
 const openingText = 'You are a coding student in bootcamp, green and wide eyed. The day is bright and promising. You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!';
-const optionsTextPage1 = 'You realize you still have to study for the exam, but also, your tummy is grumbling.';
+const optionsTextPage1 = 'You realize you still have to study for the exam, but your tummy is also grumbling.';
 const option1Page2Text = 'You must nourish your body! You decide to cook yourself a well balanced meal.';
 const option2Page2Text = 'You tell Mr. Instructor, "I am but a soldier and what I do is follow orders" and bid him farewell. And then you go home, open your laptop, and study like the goody two shoes you are.';
 const optionsTextPage2 = 'Now it is time to take the exam, but with your tummy full you are ready to sleep off your meal.';
@@ -76,7 +76,7 @@ const start =
 
         nextText:
             [
-                "You realize you still have to study for the exam, but also, your tummy is grumbling."
+                "You realize you still have to study for the exam, but your tummy is also grumbling."
 
             ],
 
@@ -281,7 +281,7 @@ function finalPage(noTest){
         judgement.setAttribute('id', 'header');
     }
         else {
-        judgement.setAttribute('id', 'header2');
+        judgement.setAttribute('id', 'congrats');
         judgement.textContent = 'Congratulations! You pass!'
     }
     

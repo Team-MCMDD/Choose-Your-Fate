@@ -52,6 +52,11 @@ button:hover {
     margin: 50px;
 }
 
+#congrats {
+    font-family: 'Great Vibes';
+    font-size: 140px;
+    margin: 50px;
+}
 
 .pageArrow {
     animation: shake 3s ease-in-out infinite;
