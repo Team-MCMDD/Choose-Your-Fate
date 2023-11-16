@@ -26,6 +26,9 @@ const openingText = 'You are a coding student in bootcamp, green and wide eyed. 
 const optionsTextPage1 = 'You realize you still have to study for the exam, but also, your tummy is grumbling.';
 const option1Page2Text = 'You must nourish your body! You decide to cook yourself a well balanced meal.';
 const option2Page2Text = 'You tell Mr. Instructor, "I am but a soldier and what I do is follow orders" and bid him farewell. And then you go home, open your laptop, and study like the goody two shoes you are.';
+const optionsTextPage2 = 'Now it is time to take the exam but, with your tummy full you are ready to sleep off your meal.';
+const options2TextPage2 = 'Now it is time to take the exam but, WHEW, all the study made you tired.';
+
 
 function StoryOptionsObject(text, img, option1, option2) {
     this.text = text;
@@ -43,7 +46,9 @@ const openingPage = new StoryOutcomeObject(openingText, 'img/Classroom1.jpg');
 const optionsPage1 = new StoryOptionsObject(optionsTextPage1, 'img/Classroom1.jpg', 'Eat', 'Study');
 const option1Page2Object = new StoryOutcomeObject(option1Page2Text, 'img/Cooking.jpg');
 const option2Page2Object = new StoryOutcomeObject(option2Page2Text, 'img/Studying.jpg');
-console.log(option2Page2Object)
+const optionsPage2 = new StoryOptionsObject(optionsTextPage2, 'img/placeholder.jpg', 'Take the exam', 'Nap');
+const options2Page2 = new StoryOptionsObject(options2TextPage2, 'img/placeholder.jpg', 'Take the exam', 'Nap');
+
 
 const start =
 
@@ -197,7 +202,7 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button1.classList.add('button-choice');
     button1.addEventListener('click', function () {
         resetPage();
-        rendergames(nextStoryOutcome1);
+        renderOrFinalButton1(nextStoryOutcome1)
 
     })
 
@@ -207,7 +212,7 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
-        rendergames(nextStoryOutcome2);
+       renderOrFinalButton2(nextStoryOutcome2);
        
     })
 
@@ -215,6 +220,13 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     
 
 }
+
+function renderOrFinalButton1(){
+    rendergames()
+
+}
+
+
 
 function resetPage() {
     const container = document.getElementById('container');
