@@ -31,8 +31,10 @@ const openingText = 'You are a coding student in bootcamp, green and wide eyed. 
 const optionsTextPage1 = 'You realize you still have to study for the exam, but also, your tummy is grumbling.';
 const option1Page2Text = 'You must nourish your body! You decide to cook yourself a well balanced meal.';
 const option2Page2Text = 'You tell Mr. Instructor, "I am but a soldier and what I do is follow orders" and bid him farewell. And then you go home, open your laptop, and study like the goody two shoes you are.';
-const optionsTextPage2 = 'Now it is time to take the exam but, with your tummy full you are ready to sleep off your meal.';
-const options2TextPage2 = 'Now it is time to take the exam but, WHEW, all the study made you tired.';
+const optionsTextPage2 = 'Now it is time to take the exam, but with your tummy full you are ready to sleep off your meal.';
+const options2TextPage2 = 'Now it is time to take the exam, but WHEW, all the study made you tired.';
+const option1Page4Text = 'You snuggle into bed and close your eyes and think of your long lost love until you fall asleep.';
+const option2Page4Text = 'You crack your knuckles and prioritize the exam before sleep! You are a Responsible Adult.';
 
 
 function StoryOptionsObject(text, img, option1, option2) {
@@ -53,7 +55,8 @@ const option1Page2Object = new StoryOutcomeObject(option1Page2Text, 'img/Cooking
 const option2Page2Object = new StoryOutcomeObject(option2Page2Text, 'img/Studying.jpg');
 const optionsPage3 = new StoryOptionsObject(optionsTextPage2, 'img/Classroom1.jpg', 'Nap', 'Take the exam');
 const options2Page3 = new StoryOptionsObject(options2TextPage2, 'img/Classroom1.jpg', 'Nap', 'Take the exam');
-
+const option1Page4 = new StoryOutcomeObject(option1Page4Text, 'img/Bed.jpg');
+const option2Page4 = new StoryOutcomeObject(option2Page4Text, 'img/Studying.jpg');
 
 
 const start =
@@ -135,7 +138,7 @@ function initGame() {
     header2.remove();
     startButton.remove();
     // Continue with the rest of your game setup
-    rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object, optionsPage3, options2Page3);
+    rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object, optionsPage3, options2Page3, option1Page4, option2Page4);
     // Source: ChatGPT
 }
 
@@ -144,7 +147,7 @@ function initGame() {
 //     makeElement(button,'text');
 //     button.textContent = state.buttonText;
 // }
-function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2) {
+function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2, nextNextOutcome1, nextNextOutcome2) {
     const textcontainer = document.getElementById('text');
     textcontainer.innerHTML = '';
 
@@ -161,7 +164,7 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     arrow.classList.add('pageArrow');
     arrow.addEventListener('click', function () {
         if (nextOptionsObject) {
-        createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2);
+        createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2, nextNextOutcome1, nextNextOutcome2);
         } else {
             finalPage();
         }
@@ -176,7 +179,7 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
 
 }
 
-function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2) {
+function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2, nextNextOutcome1, nextNextOutcome2) {
 
 
     const lastP = document.getElementById('p');
@@ -208,7 +211,7 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2,
     button1.classList.add('button-choice');
     button1.addEventListener('click', function () {
         resetPage();
-        renderButton1(nextStoryOutcome1, nextNextOptionsObject1)
+        renderButton1(nextStoryOutcome1, nextNextOptionsObject1, nextNextOutcome1, nextNextOutcome2);
     })
 
     const button2 = document.createElement('button');
@@ -217,7 +220,7 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2,
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
-       renderButton2(nextStoryOutcome2, nextNextOptionsObject2);
+       renderButton2(nextStoryOutcome2, nextNextOptionsObject2, nextNextOutcome1, nextNextOutcome2);
        total += 1
        console.log(total);
 
@@ -228,18 +231,18 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2,
 
 }
 
-function renderButton1(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2){
+function renderButton1(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOutcome1, nextNextOutcome2){
   if (storyOutcome) {
-   rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
+   rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOutcome1, nextNextOutcome2)
 } else {
     finalPage(hardfail);
 }
 
 }
 
-function renderButton2 (storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2){
+function renderButton2 (storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOutcome1, nextNextOutcome2){
     if (storyOutcome) {
-        rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
+        rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOutcome1, nextNextOutcome2)
      } else {
          finalPage(otherwise);
      }  
