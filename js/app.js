@@ -224,6 +224,23 @@ function resetPage() {
     container.innerHTML = '';
 }
 
+function finalpage(){
+    resetPage();
+    const picture = document.createElement('img');
+    const container = document.getElementById('container');
+    container.appendChild(picture);
+
+    picture.setAttribute('src','img/Classroom1.jpg');
+
+    const judgementDay = document.createElement('div');
+    const judgement = document.createElement('p');
+    container.appendChild(judgementDay);
+    judgementDay.appendChild(judgement);
+    judgement.classList.add('header');
+    judgement.textContent = 'placeholder'
+}
+
+
 homepage();
 
 const examTime =
