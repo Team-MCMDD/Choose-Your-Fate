@@ -276,7 +276,7 @@ function finalPage(noTest){
     if (noTest) {
         judgement.textContent = 'YOU FAIL' 
         judgement.setAttribute('id', 'header');
-    } else if (total < 1){
+    } else if (total < 2){
         judgement.textContent = 'YOU FAIL' ;
         judgement.setAttribute('id', 'header');
     }
