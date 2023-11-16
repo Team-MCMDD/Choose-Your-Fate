@@ -213,7 +213,9 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
         }
     })
 
+
     
+
 }
 
 function resetPage() {
@@ -288,3 +290,4 @@ const endResults =
 //       ],
 //     },
 // };
+
