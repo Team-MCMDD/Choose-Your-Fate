@@ -270,13 +270,18 @@ function finalPage(noTest){
     const judgement = document.createElement('p');
     container.appendChild(judgementDay);
     judgementDay.appendChild(judgement);
-    judgement.setAttribute('id', 'header');
+    
     // console.log(total);
 
     if (noTest) {
         judgement.textContent = 'YOU FAIL' 
+        judgement.setAttribute('id', 'header');
     } else if (total < 1){
-        judgement.textContent = 'YOU FAIL' } else {
+        judgement.textContent = 'YOU FAIL' ;
+        judgement.setAttribute('id', 'header');
+    }
+        else {
+        judgement.setAttribute('id', 'header2');
         judgement.textContent = 'Congratulations! You pass!'
     }
     
