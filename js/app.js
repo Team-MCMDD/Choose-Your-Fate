@@ -270,12 +270,6 @@ function finalPage(noTest){
     const judgement = document.createElement('p');
     container.appendChild(judgementDay);
     judgementDay.appendChild(judgement);
-
-    const button = document.createElement('button');
-    const text = document.getElementById('text');
-    text.appendChild(button);
-    button.textContent = 'play again';
-    button.addEventListener('click', homepage);
     
     // console.log(total);
 
