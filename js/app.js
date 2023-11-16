@@ -22,6 +22,11 @@ Results page: local storage
 add text to page 2
 
 */
+
+let total = 0;
+const hardfail = true;
+const otherwise = false;
+
 const openingText = 'You are a coding student in bootcamp, green and wide eyed. The day is bright and promising. You have yet to have your soul sucked from your body. But just you wait! Today just might be the day!';
 const optionsTextPage1 = 'You realize you still have to study for the exam, but also, your tummy is grumbling.';
 const option1Page2Text = 'You must nourish your body! You decide to cook yourself a well balanced meal.';
@@ -46,8 +51,9 @@ const openingPage = new StoryOutcomeObject(openingText, 'img/Classroom1.jpg');
 const optionsPage1 = new StoryOptionsObject(optionsTextPage1, 'img/Classroom1.jpg', 'Eat', 'Study');
 const option1Page2Object = new StoryOutcomeObject(option1Page2Text, 'img/Cooking.jpg');
 const option2Page2Object = new StoryOutcomeObject(option2Page2Text, 'img/Studying.jpg');
-const optionsPage2 = new StoryOptionsObject(optionsTextPage2, 'img/placeholder.jpg', 'Take the exam', 'Nap');
-const options2Page2 = new StoryOptionsObject(options2TextPage2, 'img/placeholder.jpg', 'Take the exam', 'Nap');
+const optionsPage3 = new StoryOptionsObject(optionsTextPage2, 'img/Classroom1.jpg', 'Nap', 'Take the exam');
+const options2Page3 = new StoryOptionsObject(options2TextPage2, 'img/Classroom1.jpg', 'Nap', 'Take the exam');
+
 
 
 const start =
@@ -129,7 +135,7 @@ function initGame() {
     header2.remove();
     startButton.remove();
     // Continue with the rest of your game setup
-    rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object);
+    rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object, optionsPage3, options2Page3);
     // Source: ChatGPT
 }
 
@@ -138,7 +144,7 @@ function initGame() {
 //     makeElement(button,'text');
 //     button.textContent = state.buttonText;
 // }
-function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2) {
+function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2) {
     const textcontainer = document.getElementById('text');
     textcontainer.innerHTML = '';
 
@@ -154,10 +160,10 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     arrow.setAttribute('id', 'arrow');
     arrow.classList.add('pageArrow');
     arrow.addEventListener('click', function () {
-        if (storyOutcomeObject) {
-        createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2);
+        if (nextOptionsObject) {
+        createChoices(nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2);
         } else {
-            resetPage();
+            finalPage();
         }
     });
 
@@ -170,7 +176,7 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
 
 }
 
-function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2) {
+function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2, nextNextOptionsObject1, nextNextOptionsObject2) {
 
 
     const lastP = document.getElementById('p');
@@ -202,8 +208,7 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button1.classList.add('button-choice');
     button1.addEventListener('click', function () {
         resetPage();
-        renderOrFinalButton1(nextStoryOutcome1)
-
+        renderButton1(nextStoryOutcome1, nextNextOptionsObject1)
     })
 
     const button2 = document.createElement('button');
@@ -212,8 +217,10 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
-       renderOrFinalButton2(nextStoryOutcome2);
-       
+       renderButton2(nextStoryOutcome2, nextNextOptionsObject2);
+       total += 1
+       console.log(total);
+
     })
 
 
@@ -221,9 +228,21 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
 
 }
 
-function renderOrFinalButton1(){
-    rendergames()
+function renderButton1(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2){
+  if (storyOutcome) {
+   rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
+} else {
+    finalPage(hardfail);
+}
 
+}
+
+function renderButton2 (storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2){
+    if (storyOutcome) {
+        rendergames(storyOutcome, nextOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
+     } else {
+         finalPage(otherwise);
+     }  
 }
 
 
@@ -236,7 +255,7 @@ function resetPage() {
     container.innerHTML = '';
 }
 
-function finalpage(){
+function finalPage(noTest){
     resetPage();
     const picture = document.createElement('img');
     const container = document.getElementById('container');
@@ -248,8 +267,16 @@ function finalpage(){
     const judgement = document.createElement('p');
     container.appendChild(judgementDay);
     judgementDay.appendChild(judgement);
-    judgement.classList.add('header');
-    judgement.textContent = 'placeholder'
+    judgement.setAttribute('id', 'header');
+    // console.log(total);
+
+    if (noTest) {
+        judgement.textContent = 'YOU FAIL' 
+    } else if (total < 1){
+        judgement.textContent = 'YOU FAIL' } else {
+        judgement.textContent = 'Congradulations! You pass!'
+    }
+    
 }
 
 
