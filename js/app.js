@@ -43,7 +43,7 @@ const openingPage = new StoryOutcomeObject(openingText, 'img/Classroom1.jpg');
 const optionsPage1 = new StoryOptionsObject(optionsTextPage1, 'img/Classroom1.jpg', 'Eat', 'Study');
 const option1Page2Object = new StoryOutcomeObject(option1Page2Text, 'img/Cooking.jpg');
 const option2Page2Object = new StoryOutcomeObject(option2Page2Text, 'img/Studying.jpg');
-
+console.log(option2Page2Object)
 
 const start =
 
@@ -124,7 +124,7 @@ function initGame() {
     header2.remove();
     startButton.remove();
     // Continue with the rest of your game setup
-    rendergames(openingPage, optionsPage1, option1Page2Object, option1Page2Text);
+    rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object);
     // Source: ChatGPT
 }
 
@@ -160,6 +160,7 @@ function rendergames(storyOutcomeObject, nextOptionsObject, nextStoryOutcome1, n
     picture.setAttribute('id', 'picture');
     makeElement(picture, 'container');
     picture.classList.add('page1');
+    console.log(storyOutcomeObject.img)
     picture.setAttribute('src', storyOutcomeObject.img);
 
 }
@@ -206,11 +207,8 @@ function createChoices(storyOptionsObject, nextStoryOutcome1, nextStoryOutcome2)
     button2.classList.add('button-choice');
     button2.addEventListener('click', function () {
         resetPage();
-        if (storyOptionsObject) {
         rendergames(nextStoryOutcome2);
-        } else {
-            resetPage();
-        }
+       
     })
 
 
