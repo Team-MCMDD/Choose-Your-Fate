@@ -109,17 +109,13 @@ function makeElement(element, parentElementIdString) {
     parentElement.appendChild(element);
 }
     
-
+const startButton = document.createElement('button');
+    
+makeElement(startButton, 'startButton');
+startButton.textContent = 'start';
+startButton.addEventListener('click', initGame)
 
 function homepage() {
-
-    const startButton = document.createElement('button');
-
-    makeElement(startButton, 'startButton');
-    startButton.textContent = 'start';
-    startButton.addEventListener('click', initGame)
-    
-    
     const h1 = document.createElement('h1');
     makeElement(h1, 'header');
     h1.textContent = 'CHOOSE YOUR FATE';
@@ -279,22 +275,10 @@ function finalPage(noTest){
     button.textContent = 'play again';
     button.addEventListener('click', function(){
         resetPage();
-        const main = document.getElementById('main');
-        const divHeader = document.createElement('div');
-        divHeader.setAttribute('id', 'header');
-        main.appendChild(divHeader);
-
-        const startButton = document.createElement('section');
-        startButton.setAttribute('id', 'startButton');
-        main.appendChild(startButton);
-
-        const divHeader2 = document.createElement('div');
-        divHeader.setAttribute('id', 'header2');
-        main.appendChild(divHeader2);
-
-        homepage();
-
+        rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object, optionsPage3, options2Page3, option1Page4, option2Page4);
+        total = 0;
     });
+
     
     // console.log(total);
 
