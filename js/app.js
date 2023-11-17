@@ -103,21 +103,23 @@ const start =
     }
 }
 
-const startButton = document.createElement('button');
-
-makeElement(startButton, 'startButton');
-startButton.textContent = 'start';
-startButton.addEventListener('click', initGame)
 
 function makeElement(element, parentElementIdString) {
     parentElement = document.getElementById(parentElementIdString);
     parentElement.appendChild(element);
-
 }
+    
 
 
 function homepage() {
 
+    const startButton = document.createElement('button');
+
+    makeElement(startButton, 'startButton');
+    startButton.textContent = 'start';
+    startButton.addEventListener('click', initGame)
+    
+    
     const h1 = document.createElement('h1');
     makeElement(h1, 'header');
     h1.textContent = 'CHOOSE YOUR FATE';
@@ -275,7 +277,24 @@ function finalPage(noTest){
     const text = document.getElementById('text');
     text.appendChild(button);
     button.textContent = 'play again';
-    button.addEventListener('click', homepage);
+    button.addEventListener('click', function(){
+        resetPage();
+        const main = document.getElementById('main');
+        const divHeader = document.createElement('div');
+        divHeader.setAttribute('id', 'header');
+        main.appendChild(divHeader);
+
+        const startButton = document.createElement('section');
+        startButton.setAttribute('id', 'startButton');
+        main.appendChild(startButton);
+
+        const divHeader2 = document.createElement('div');
+        divHeader.setAttribute('id', 'header2');
+        main.appendChild(divHeader2);
+
+        homepage();
+
+    });
     
     // console.log(total);
 
