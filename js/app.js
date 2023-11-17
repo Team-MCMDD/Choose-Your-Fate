@@ -103,21 +103,19 @@ const start =
     }
 }
 
-const startButton = document.createElement('button');
-
-makeElement(startButton, 'startButton');
-startButton.textContent = 'start';
-startButton.addEventListener('click', initGame)
 
 function makeElement(element, parentElementIdString) {
     parentElement = document.getElementById(parentElementIdString);
     parentElement.appendChild(element);
-
 }
-
+    
+const startButton = document.createElement('button');
+    
+makeElement(startButton, 'startButton');
+startButton.textContent = 'start';
+startButton.addEventListener('click', initGame)
 
 function homepage() {
-
     const h1 = document.createElement('h1');
     makeElement(h1, 'header');
     h1.textContent = 'CHOOSE YOUR FATE';
@@ -275,7 +273,12 @@ function finalPage(noTest){
     const text = document.getElementById('text');
     text.appendChild(button);
     button.textContent = 'play again';
-    button.addEventListener('click', homepage);
+    button.addEventListener('click', function(){
+        resetPage();
+        rendergames(openingPage, optionsPage1, option1Page2Object, option2Page2Object, optionsPage3, options2Page3, option1Page4, option2Page4);
+        total = 0;
+    });
+
     
     // console.log(total);
 
