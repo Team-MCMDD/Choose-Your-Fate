@@ -283,10 +283,10 @@ function finalPage(noTest){
     // console.log(total);
 
     if (noTest) {
-        judgement.textContent = 'YOU FAIL' 
+        judgement.textContent = 'YOU FAIL!' 
         judgement.setAttribute('id', 'header');
     } else if (total < 2){
-        judgement.textContent = 'YOU FAIL' ;
+        judgement.textContent = 'YOU FAIL!' ;
         judgement.setAttribute('id', 'header');
     }
         else {
